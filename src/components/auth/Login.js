@@ -1,34 +1,56 @@
-import React from "react";
-
+import React, {useState} from "react";
+import {Link} from "react-router-dom";
 
 const Login = () => {
 
-    const onChange = () => {
+    const [usuario, setUsuario] = useState({
+        email:" ", 
+        password:" "
+    });
 
+    const {email, password} = usuario;
+
+    const onChange = e => {
+        setUsuario({
+            ...setUsuario,
+            [e.target.name] : e.target.value
+
+        });
+
+    }
+
+    // cuando se da submit  (para iniciar sesion)
+
+    const onSubmit = e => {
+        e.preventDefault();
     }
 
     return (  
         <div className="form-usuario">
             <div className="contenedor-form sombre-dark">
                 <h1>Iniciar Sesión</h1>
-                <form>
+                <form
+                    onSubmit={onSubmit}
+                >
                     <div className="campo-form">
                         <label htmlFor="email">Email</label>
                         <input
                             type="email"
                             id="email"
                             name="email"
+                            value={email}
                             placeholder="Tu Email"
                             onChange={onChange}
                         >
                         </input>
                     </div>
                     <div className="campo-form">
-                        <label htmlFor="Password">Password</label>
+                        <label htmlFor="password">Password</label>
                         <input
-                            type="Password"
-                            id="Password"
-                            name="Password"
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={password}
                             placeholder="Tu Password"
                             onChange={onChange}
                         >
@@ -40,6 +62,9 @@ const Login = () => {
                     </div>
 
                 </form>
+                <Link to={"/nueva-cuenta"} className="enlace-cuenta">
+                    Obtener Cuenta
+                </Link>
             </div>
         </div>
     );
