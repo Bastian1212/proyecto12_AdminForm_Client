@@ -6,7 +6,8 @@ import proyectoReducer from "./ProyectoReducer";
 import {FORMULARIO_PROYECTO,
     OBTENER_PROYECTO
     ,AGREGAR_PROYECTO,
-    VALIDAR_FORMULARIO} from "../../types/index";
+    VALIDAR_FORMULARIO,
+    PROYECTO_ACTUAL} from "../../types/index";
 
 
 const ProyectoState = props => {
@@ -20,7 +21,8 @@ const ProyectoState = props => {
     const initialState = {
         proyectos: [],
         formulario: false,
-        errorFormulario : false
+        errorFormulario : false,
+        proyecto:null
     }
 
     // Dispatch para ejecutar las acciones 
@@ -48,7 +50,8 @@ const ProyectoState = props => {
 
         dispatch({
             type :  AGREGAR_PROYECTO,
-            payload : proyecto
+            payload : proyecto,
+            
         })
     }
 
@@ -61,16 +64,29 @@ const ProyectoState = props => {
 
     }
 
+    // Seleciona el proyecto en que el usuario dio click 
+
+    const preyectoActual = proyectoId => {
+        dispatch({
+            type : PROYECTO_ACTUAL,
+            payload : proyectoId,
+
+            
+        })
+    }
+
     return (
         <proyectoContext.Provider
             value={{
                 proyectos: state.proyectos,
                 formulario: state.formulario,
                 errorFormulario: state.errorFormulario,
+                proyecto: state.proyecto,
                 mostrarFormulario,
                 obtenerProyectos,
                 agregarProyecto,
-                mostrarError
+                mostrarError,
+                preyectoActual
             }}
         >
             {props.children}
