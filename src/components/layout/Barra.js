@@ -7,6 +7,7 @@ const Barra = () => {
 
             <nav className="nav-principal">
                 <a href="#!">Cerrar Sesión</a>
+                
             </nav>
         </header>
     );
