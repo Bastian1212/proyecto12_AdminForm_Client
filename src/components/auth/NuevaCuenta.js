@@ -24,6 +24,15 @@ const NuevaCuenta = () => {
 
     const onSubmit = e => {
         e.preventDefault();
+
+
+        //validar que los campos no esten vacios 
+
+        //password minimo de 6 caracteres 
+
+        //los 2 password iguales 
+
+        //pasarlos al action 
     }
 
 
