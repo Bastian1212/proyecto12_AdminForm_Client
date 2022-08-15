@@ -80,9 +80,7 @@ const ProyectoState = props => {
     const eliminarProyecto = proyectoId => {
         dispatch({
             type : ELIMINAR_PROYECTO,
-            payload : proyectoId,
-
-            
+            payload : proyectoId         
         })
 
     }

@@ -13,12 +13,12 @@ function App() {
     <ProyectoState>
       <TareaState>
         <Router>
-          <Routes> 
-              <Route  path="/" element={<Login/>} />
-              <Route  path="/nueva-cuenta" element={<NuevaCuenta/>} />
-              <Route  path="/proyectos" element={<Proyectos/>} />
-          </Routes>
-        </Router>
+            <Routes> 
+                <Route  path="/" element={<Login/>} />
+                <Route  path="/nueva-cuenta" element={<NuevaCuenta/>} />
+                <Route  path="/proyectos" element={<Proyectos/>} />
+            </Routes>
+          </Router>
       </TareaState>
     </ProyectoState>
   );

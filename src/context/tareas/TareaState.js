@@ -7,21 +7,7 @@ import {TAREAS_PROYECTO} from "../../types/index"
 
 const TareaState = props => {
 
-    const tareasProyecto = [
-        {nombre: "Elegir Plataforma", estado:true, proyectoId: 1},
-        {nombre: "Elegir  Colores", estado:false, proyectoId: 2},
-        {nombre: "Elegir Plataformas pago ", estado:false, proyectoId: 3},
-        {nombre: "Elegir Elegir Hosting", estado:true, proyectoId: 4 },
-        {nombre: "Elegir Plataforma", estado:true, proyectoId: 1},
-        {nombre: "Elegir  Colores", estado:false, proyectoId: 2},
-        {nombre: "Elegir Plataformas pago ", estado:false, proyectoId: 3},
-        {nombre: "Elegir Elegir Hosting", estado:true, proyectoId: 4 },
-        {nombre: "Elegir Plataforma", estado:true, proyectoId: 2},
-        {nombre: "Elegir  Colores", estado:false, proyectoId: 3},
-        {nombre: "Elegir Plataformas pago ", estado:false, proyectoId: 4},
-        {nombre: "Elegir Elegir Hosting", estado:true, proyectoId: 3 }
-    ]
-
+   
 
     const initialState = {
         tareas: [
@@ -37,7 +23,8 @@ const TareaState = props => {
             {nombre: "Elegir  Colores", estado:false, proyectoId: 3},
             {nombre: "Elegir Plataformas pago ", estado:false, proyectoId: 4},
             {nombre: "Elegir Elegir Hosting", estado:true, proyectoId: 3 }
-        ]
+        ],
+        tareasProyecto:null
     }
 
     const [state, dispatch] = useReducer(TareasReduce,initialState);
@@ -57,6 +44,7 @@ const TareaState = props => {
         <TareaContext.Provider
          value={{
             tareas:state.tareas,
+            tareasProyecto: state.tareasProyecto,
             obtenerTareas
          }}
         >
