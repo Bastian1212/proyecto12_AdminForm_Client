@@ -15,7 +15,7 @@ const ListadoProyecto = () => {
 
     if(proyectos.length === 0 ) 
 
-        return <p>No hay proyectos, Comienza Creando uno </p>;
+        return <p>No hay proyectos, Comienza Creando uno. </p>;
 
 
     return (  
