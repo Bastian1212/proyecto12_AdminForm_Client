@@ -1,11 +1,16 @@
 import React, {Fragment, useContext} from "react";
 import proyectoContext from "../../context/proyectos/proyectoContext";
+import TareaContext from "../../context/tareas/tareasContext";
 import Tarea from "./Tarea";
 
 const ListadoTarea = () => {
 
     const proyectosContext = useContext(proyectoContext);
     const {proyecto, eliminarProyecto} = proyectosContext;
+
+
+    const tareaContext = useContext(TareaContext);
+    const {tareasProyecto} = tareaContext;
 
     //si no hay proyecto selecionado
     if(!proyecto) 
@@ -14,12 +19,7 @@ const ListadoTarea = () => {
     //Array destructuring para extraer el proyecto actual 
     const [proyectoActual] = proyecto;
 
-    const tareasProyecto = [
-        {nombre: "Elegir Plataforma", estado:true, proyectoId: 1},
-        {nombre: "Elegir  Colores", estado:false, proyectoId: 2},
-        {nombre: "Elegir Plataformas pago ", estado:false, proyectoId: 3},
-        {nombre: "Elegir Elegir Hosting", estado:true, proyectoId: 4 },
-    ];
+    
 
     //Eliminar un proyecto
 
