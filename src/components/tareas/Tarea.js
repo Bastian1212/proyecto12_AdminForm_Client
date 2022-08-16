@@ -9,12 +9,23 @@ const Tarea = ({tarea}) => {
     const {proyecto} = proyectosContext;
 
     const tareaContext = useContext(TareaContext);
-    const {eliminarTarea, obtenerTareas} = tareaContext;
+    const {eliminarTarea, obtenerTareas, cambiarEstadoTarea} = tareaContext;
  
 
     const tareaEliminar = id => {
         eliminarTarea(id);
         obtenerTareas(proyecto[0].id);
+    }
+
+    // Funcion que modifica ewl estado de las tareas 
+
+    const EstadoTarea = tarea  => { 
+        if (tarea.estado){
+            tarea.estado = false; 
+        }else{
+            tarea.estado = true;
+        }
+        cambiarEstadoTarea(tarea);
     }
 
     return (  
@@ -27,6 +38,7 @@ const Tarea = ({tarea}) => {
                         <button
                             type="button"
                             className="completo"
+                            onClick={() =>EstadoTarea(tarea) }
                         >Completo</button>
                     )
                 :
@@ -34,6 +46,7 @@ const Tarea = ({tarea}) => {
                         <button
                             type="button"
                             className="incompleto"
+                            onClick={() =>EstadoTarea(tarea) }
                         >Incompleto</button>
                     )
                     

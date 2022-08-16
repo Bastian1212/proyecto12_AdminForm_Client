@@ -6,7 +6,8 @@ import TareasReduce from "./tareasReduce";
 import {TAREAS_PROYECTO,
         AGREGAR_TAREA,
         VALIDAR_TAREA,
-        ELIMINAR_TAREA} from "../../types/index"
+        ELIMINAR_TAREA,
+        ESTADO_TAREA} from "../../types/index"
 
 const TareaState = props => {
 
@@ -64,6 +65,15 @@ const TareaState = props => {
             payload:id
         })
     }
+
+    // cambiar el estado de la tarea 
+
+    const cambiarEstadoTarea = tarea =>{
+        dispatch({
+            type: ESTADO_TAREA,
+            payload:tarea
+        })
+    }
     
 
     return (
@@ -76,7 +86,8 @@ const TareaState = props => {
             obtenerTareas,
             agregarTarea,
             validarTarea,
-            eliminarTarea
+            eliminarTarea,
+            cambiarEstadoTarea
          }}
         >
             {props.children}
