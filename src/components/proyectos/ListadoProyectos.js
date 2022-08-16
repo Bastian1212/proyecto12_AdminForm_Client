@@ -11,6 +11,8 @@ const ListadoProyecto = () => {
 
     useEffect( () => {
         obtenerProyectos();
+        // eslint-disable-nxt
+
     }, []);
 
     if(proyectos.length === 0 ) 
