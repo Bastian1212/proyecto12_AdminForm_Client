@@ -2,7 +2,8 @@ import {TAREAS_PROYECTO,
         AGREGAR_TAREA,
         VALIDAR_TAREA,
         ELIMINAR_TAREA,
-        ESTADO_TAREA} from "../../types/index"
+        ESTADO_TAREA,
+        TAREA_ACTUAL} from "../../types/index"
 
 export default (state, action) =>  {
     switch(action.type){
@@ -31,6 +32,12 @@ export default (state, action) =>  {
             return{ 
                 ...state, 
                 tareas: state.tareasProyecto.map(tarea => tarea.id === action.payload.id ? action.payload: tarea)
+            }
+        case TAREA_ACTUAL:
+            return{ 
+                ...state, 
+                tareaseleccionada: action.payload
+
             }
         default:
             return state;
