@@ -7,20 +7,23 @@ import Proyectos from "./components/proyectos/Proyectos";
 
 import ProyectoState from "./context/proyectos/ProyectoState";
 import TareaState from "./context/tareas/TareaState";
+import AlertaState from "./context/alertas/AlertaState"
 
 function App() {
   return (
-    <ProyectoState>
-      <TareaState>
-        <Router>
-            <Routes> 
-                <Route  path="/" element={<Login/>} />
-                <Route  path="/nueva-cuenta" element={<NuevaCuenta/>} />
-                <Route  path="/proyectos" element={<Proyectos/>} />
-            </Routes>
-          </Router>
-      </TareaState>
-    </ProyectoState>
+    <AlertaState>
+      <ProyectoState>
+        <TareaState>
+          <Router>
+              <Routes> 
+                  <Route  path="/" element={<Login/>} />
+                  <Route  path="/nueva-cuenta" element={<NuevaCuenta/>} />
+                  <Route  path="/proyectos" element={<Proyectos/>} />
+              </Routes>
+            </Router>
+        </TareaState>
+      </ProyectoState>
+    </AlertaState>
   );
 
     

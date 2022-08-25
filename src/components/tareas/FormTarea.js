@@ -66,6 +66,7 @@ const FormTarea = () => {
     }else{
         // actualizar tarea existente 
         actualizarTarea(tarea);
+        // elimina  tareaSeleccionada del state 
         limpiarTarea();
     }
 
