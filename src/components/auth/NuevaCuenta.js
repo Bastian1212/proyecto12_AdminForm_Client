@@ -26,7 +26,7 @@ const NuevaCuenta = () => {
 
     const onChange = e => {
         setUsuario({
-            ...setUsuario,
+            ...usuario,
             [e.target.name] : e.target.value
 
         });
@@ -108,8 +108,8 @@ const NuevaCuenta = () => {
                         type="email"
                         id="email"
                         name="email"
-                        value={email}
                         placeholder="Tu Email"
+                        value={email}
                         onChange={onChange}
                     >
                     </input>
@@ -120,8 +120,8 @@ const NuevaCuenta = () => {
                         type="password"
                         id="password"
                         name="password"
-                        value={password}
                         placeholder="Tu Password"
+                        value={password}
                         onChange={onChange}
                     >
                     </input>
@@ -132,8 +132,8 @@ const NuevaCuenta = () => {
                         type="password"
                         id="confirmar"
                         name="confimar"
-                        value={confimar}
                         placeholder="Confirma Password"
+                        value={confimar}
                         onChange={onChange}
                     >
                     </input>
