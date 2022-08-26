@@ -10,8 +10,28 @@ import { REGISTRO_EXISTOSO,
 
 
     const AuthState = props => {
-        return (
 
+        const initialState = { 
+            token:localStorage.getItem("token"),
+            autenticado: null,
+            usuario:null, 
+            mensaje:null 
+        }
+        const [state, dispatch] = useReducer(AuthState, initialState);
+
+       //Las Funciones
+
+        return (
+            <authContext.Provider
+                value={{
+                    token: state.token,
+                    autenticado: state.autenticado,
+                    usuario: state.usuario,
+                    mensaje: state.mensaje
+                }}
+            >
+                {props.children}
+            </authContext.Provider>
         )
     }
 
