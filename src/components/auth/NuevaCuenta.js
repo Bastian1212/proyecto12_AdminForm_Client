@@ -1,6 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import {Link} from "react-router-dom";
+import AlertaContext from "../../context/alertas/alertaContext";
 const NuevaCuenta = () => {
+
+    // extraer los valors del context 
+    const alertaContext = useContext(AlertaContext);
+    const {alerta, mostrarAlerta} = alertaContext;
+
 
     const [usuario, setUsuario] = useState({
         nombre:"",
@@ -27,10 +33,21 @@ const NuevaCuenta = () => {
 
 
         //validar que los campos no esten vacios 
-
+        if(nombre.trim() === "" || apellido.trim() === "" || email.trim() === "" || password.trim() === "" ||  confimar.trim() === "" ){
+            mostrarAlerta("Todos los campos son  obligatorios", "alerta-error");
+            return;
+        }
         //password minimo de 6 caracteres 
+        if(password.length < 6 ){
+            mostrarAlerta("El password debe ser minimo de 6 caracteres ", "alerta-error");
+            return;
 
+        }
         //los 2 password iguales 
+        if(password!== confimar){
+            mostrarAlerta("Los password no son iguales ", "alerta-error");
+            return;
+        }
 
         //pasarlos al action 
     }
@@ -39,6 +56,7 @@ const NuevaCuenta = () => {
 
     return (  
         <div className="form-usuario">
+            {alerta ? (<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>): null}
         <div className="contenedor-form sombre-dark">
             <h1>Obtener Cuenta</h1>
             <form
@@ -61,7 +79,7 @@ const NuevaCuenta = () => {
                             type="text"
                             id="apellido"
                             name="apellido"
-                            placeholder="Tu Nombre"
+                            placeholder="Tu Apellido"
                             value={apellido}
                             onChange={onChange}
                         />
