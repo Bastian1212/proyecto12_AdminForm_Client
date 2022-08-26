@@ -1,19 +1,24 @@
 import React, {useState, useContext} from "react";
 import {Link} from "react-router-dom";
 import AlertaContext from "../../context/alertas/alertaContext";
+import authContext from "../../context/autenticacion/authContext";
+
 const NuevaCuenta = () => {
 
     // extraer los valors del context 
     const alertaContext = useContext(AlertaContext);
     const {alerta, mostrarAlerta} = alertaContext;
 
+    const authContext_ = useContext(authContext);
+    const  {registrarUsuario} = authContext_;
+
 
     const [usuario, setUsuario] = useState({
-        nombre:"",
-        apellido:"",
-        email:"",
-        password:"",
-        confimar:""   
+        nombre: '',
+        apellido: '',
+        email: '',
+        password: '',
+        confirmar: ''
     });
 
     const {nombre,apellido,email,password,confimar} = usuario;
@@ -31,26 +36,39 @@ const NuevaCuenta = () => {
     const onSubmit = e => {
         e.preventDefault();
 
-
+        
+        
         //validar que los campos no esten vacios 
-        if(nombre.trim() === "" || apellido.trim() === "" || email.trim() === "" || password.trim() === "" ||  confimar.trim() === "" ){
-            mostrarAlerta("Todos los campos son  obligatorios", "alerta-error");
-            return;
-        }
+        if( nombre.trim() === '' || 
+            email.trim() === '' || 
+            apellido.trim() === '' ||
+            password.trim() === '' || 
+            confimar.trim() === '' ) {
+                mostrarAlerta('Todos los campos son obligatorios', 'alerta-error');
+                return;
+            }
+
         //password minimo de 6 caracteres 
         if(password.length < 6 ){
             mostrarAlerta("El password debe ser minimo de 6 caracteres ", "alerta-error");
             return;
 
         }
-        //los 2 password iguales 
-        if(password!== confimar){
-            mostrarAlerta("Los password no son iguales ", "alerta-error");
-            return;
-        }
+        // //los 2 password iguales 
+        // if(password !== confimar){
+        //     mostrarAlerta("Los password no son iguales ", "alerta-error");
+        //     return;
+        // }
 
         //pasarlos al action 
+        // registrarUsuario({
+        //     nombre,
+        //     apellido,
+        //     email,
+        //     password
+        // })
     }
+
 
 
 
