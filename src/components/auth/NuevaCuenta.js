@@ -54,19 +54,19 @@ const NuevaCuenta = () => {
             return;
 
         }
-        // //los 2 password iguales 
-        // if(password !== confimar){
-        //     mostrarAlerta("Los password no son iguales ", "alerta-error");
-        //     return;
-        // }
+        //los 2 password iguales 
+        if(password !== confimar){
+            mostrarAlerta("Los password no son iguales ", "alerta-error");
+            return;
+        }
 
         //pasarlos al action 
-        // registrarUsuario({
-        //     nombre,
-        //     apellido,
-        //     email,
-        //     password
-        // })
+        registrarUsuario({
+            nombre,
+            apellido,
+            email,
+            password
+        })
     }
 
 
