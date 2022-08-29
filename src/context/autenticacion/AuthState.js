@@ -3,6 +3,7 @@ import authContext from "./authContext";
 import authReducer from "./authReducer";
 
 import clienteAxios from "../../config/axios";
+import tokenAuth from "../../config/token";
 
 import { REGISTRO_EXISTOSO,
     REGISTRO_ERROR, 
@@ -29,7 +30,10 @@ import { REGISTRO_EXISTOSO,
                 dispatch({
                     type : REGISTRO_EXISTOSO,
                     payload : respuesta.data
-                })
+                });
+                // obtenr el usuario 
+                usuarioAutenticado();
+
             } catch (error) {
                 //console.log(error.response.data.msg);
                 const alerta = {
@@ -42,6 +46,31 @@ import { REGISTRO_EXISTOSO,
                     payload: alerta
                 })
                 
+            }
+        }
+
+        // retorna eñ usuario autenticado 
+
+        const usuarioAutenticado = async () => {
+            const token = localStorage.getItem("token");
+            if(token){
+                // Funcion para enviar el token por headers 
+                tokenAuth(token);
+
+            }
+            try {
+                const respuesta = await clienteAxios.get("/api/auth");
+                console.log(respuesta.data.usuario);
+                dispatch({
+                    type: OBTENER_USUARIOS, 
+                    payload : respuesta.data.usuario
+                });
+
+            } catch (error) {
+                console.log(error.response);
+                dispatch({
+                    type: LOGIN_ERROR
+                })
             }
         }
 
