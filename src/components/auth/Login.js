@@ -52,11 +52,9 @@ const Login = (props) => {
         // validar que no haya campos vacios 
         if(email.trim() === "" || password.trim() === "" ){
             mostrarAlerta("todos los campos son obligatorios", "alerta-error");
-
-        // pasarlo al action 
-        iniciarSesion({email, password});
-
         }
+
+        iniciarSesion({email, password});
 
     }
 
