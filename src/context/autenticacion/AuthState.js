@@ -26,13 +26,13 @@ import { REGISTRO_EXISTOSO,
         const registrarUsuario = async datos => {
             try {
                 const respuesta = await clienteAxios.post("/api/usuarios",datos);
-                console.log(respuesta.data);
+                console.log(respuesta.data.token);
                 dispatch({
                     type : REGISTRO_EXISTOSO,
-                    payload : respuesta.data
+                    payload : respuesta.data.token
                 });
                 // obtenr el usuario 
-                usuarioAutenticado();
+                usuarioAutenticado(respuesta.data.token);
 
             } catch (error) {
                 //console.log(error.response.data.msg);
@@ -51,10 +51,11 @@ import { REGISTRO_EXISTOSO,
 
         // retorna eñ usuario autenticado 
 
-        const usuarioAutenticado = async () => {
-            const token = localStorage.getItem("token");
+        const usuarioAutenticado = async (token) => {
+           // const token = localStorage.getItem("token");
             if(token){
                 // Funcion para enviar el token por headers 
+                console.log(token);
                 tokenAuth(token);
 
             }
