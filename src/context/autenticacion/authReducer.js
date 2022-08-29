@@ -1,4 +1,5 @@
 import React from "react";
+import Login from "../../components/auth/Login";
 import { REGISTRO_EXISTOSO,
     REGISTRO_ERROR, 
     OBTENER_USUARIOS,
@@ -10,6 +11,7 @@ export default (state, action) => {
     switch(action.type){
         
         case REGISTRO_EXISTOSO:
+        case LOGIN_EXISTOSO:
             localStorage.setItem("token", action.payload);
             return {
                 ...state,
@@ -21,8 +23,7 @@ export default (state, action) => {
                 ...state, 
                 usuario : action.payload
             }
-        //case LOGIN_ERROR:
-
+        case LOGIN_ERROR:
         case REGISTRO_ERROR:
             localStorage.removeItem("token");
             return {
