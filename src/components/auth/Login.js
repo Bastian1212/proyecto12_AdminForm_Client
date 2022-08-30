@@ -1,5 +1,6 @@
 import React, {useState, useContext, useEffect} from "react";
-import {Link} from "react-router-dom";
+import { Link, BrowserRouter, Route } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 import AlertaContext from "../../context/alertas/alertaContext";
 import authContext from "../../context/autenticacion/authContext";
 
@@ -15,15 +16,16 @@ const Login = (props) => {
       // En caso de que el usuario se haya autenticado o registado 
 
     useEffect(() => {
-        // if(autenticado){
-        //     props.history.push("/proyectos");
-        // }
+        if(autenticado){
+            console.log(autenticado);
+            props.history.push('/proyectos');
+        }
 
         if(mensaje){
             mostrarAlerta(mensaje.msg, mensaje.categoria);
         }
 
-    }, [mensaje, autenticado]);
+    }, [mensaje, autenticado, props.history]);
 
 
 
