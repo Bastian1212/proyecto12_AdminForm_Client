@@ -7,10 +7,12 @@ const Barra = () => {
     // Extrar la información de sessión 
 
     const authContext_ = useContext(authContext);
-    const {usuario,usuarioAutenticado } = authContext_;
+    const {usuario,usuarioAutenticado, cerrarSesion } = authContext_;
     useEffect(() =>  {
         usuarioAutenticado();
     }, []);
+
+ 
 
     return ( 
         <header className="app-header">
@@ -19,7 +21,10 @@ const Barra = () => {
              : null }
 
             <nav className="nav-principal">
-                <a href="#!">Cerrar Sesión</a>
+                <button
+                    className="btn btn-blank cerrar-sesion"
+                    onClick={() => cerrarSesion()}
+                >Cerrar Sesión</button>
                 
             </nav>
         </header>

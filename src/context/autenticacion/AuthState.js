@@ -19,7 +19,8 @@ import { REGISTRO_EXISTOSO,
             token:localStorage.getItem("token"),
             autenticado: null,
             usuario:null, 
-            mensaje:null 
+            mensaje:null,
+            cargando:true
         }
         const [state, dispatch] = useReducer(authReducer, initialState);
         
@@ -106,6 +107,12 @@ import { REGISTRO_EXISTOSO,
             
         }
 
+        const cerrarSesion  = () => {
+            dispatch({
+                type: CERRAR_SESION
+            })
+        }
+
 
 
         return (
@@ -115,9 +122,11 @@ import { REGISTRO_EXISTOSO,
                     autenticado: state.autenticado,
                     usuario: state.usuario,
                     mensaje: state.mensaje,
+                    cargando: state.cargando,
                     registrarUsuario,
                     iniciarSesion,
-                    usuarioAutenticado
+                    usuarioAutenticado,
+                    cerrarSesion
                 }}
             >
                 {props.children}
