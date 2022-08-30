@@ -12,6 +12,8 @@ export default (state, action) => {
         
         case REGISTRO_EXISTOSO:
         case LOGIN_EXISTOSO:
+            console.log("desde Reducer");
+            console.log(action.payload);
             localStorage.setItem("token", action.payload);
             return {
                 ...state,

@@ -15,19 +15,16 @@ const Login = (props) => {
 
       // En caso de que el usuario se haya autenticado o registado 
 
-    useEffect(() => {
-        if(autenticado){
-            console.log(autenticado);
+      useEffect(() => {
+        if(autenticado) {
             props.history.push('/proyectos');
         }
 
-        if(mensaje){
+        if(mensaje) {
             mostrarAlerta(mensaje.msg, mensaje.categoria);
         }
-
+        // eslint-disable-next-line
     }, [mensaje, autenticado, props.history]);
-
-
 
 
     const [usuario, setUsuario] = useState({
