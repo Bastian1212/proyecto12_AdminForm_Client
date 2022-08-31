@@ -32,8 +32,10 @@ import { REGISTRO_EXISTOSO,
                     type : REGISTRO_EXISTOSO,
                     payload : respuesta.data.token
                 });
-                // obtenr el usuario 
-                usuarioAutenticado();
+                // obtener el usuario 
+                setTimeout(() => {
+                    usuarioAutenticado();
+                }, 100);
 
             } catch (error) {
                 //console.log(error.response.data.msg);
@@ -50,14 +52,16 @@ import { REGISTRO_EXISTOSO,
             }
         }
 
-        // retorna eñ usuario autenticado 
+        // retorna el usuario autenticado 
 
         const usuarioAutenticado = async () => {
-            const token = localStorage.getItem("token");
+            const token = localStorage.getItem('token');
             console.log("desde autenticacion de usuario ");
-            console.log(token);
-            if(token){
+            console.log(localStorage.getItem('token'));
+            console.log("---------------------------------");
+            if(true){
                 // Funcion para enviar el token por headers 
+                console.log("hola");
                 tokenAuth(token);
 
             }
@@ -88,7 +92,9 @@ import { REGISTRO_EXISTOSO,
                     type : LOGIN_EXISTOSO,
                     payload : respuesta.data.token
                 }); 
-                usuarioAutenticado();
+                //
+                //console.log("aaaaaa");
+                //console.log(localStorage.getItem('token'));
 
                 
             } catch (error) {
@@ -104,6 +110,11 @@ import { REGISTRO_EXISTOSO,
                 })
                 
             }
+
+            setTimeout(() => {
+                usuarioAutenticado();
+            }, 100);
+
             
         }
 

@@ -13,7 +13,9 @@ const Proyectos  = () => {
 
     const authContext_ = useContext(authContext);
     const {usuarioAutenticado} = authContext_;
+    
     useEffect(() =>  {
+        
         usuarioAutenticado();
     }, []);
 
