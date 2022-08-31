@@ -39,6 +39,7 @@ const ProyectoState = props => {
         
         try {
             const resultado = await clienteAxios.get("api/proyectos");
+            //console.log(resultado.data.proyectos);
             dispatch({
                 type :  AGREGAR_PROYECTO,
                 payload : resultado.data.proyectos,
@@ -95,7 +96,7 @@ const ProyectoState = props => {
 
     // Seleciona el proyecto en que el usuario dio click 
 
-    const preyectoActual = proyectoId => {
+    const proyectoActual = proyectoId => {
         dispatch({
             type : PROYECTO_ACTUAL,
             payload : proyectoId,
@@ -140,7 +141,7 @@ const ProyectoState = props => {
                 obtenerProyectos,
                 agregarProyecto,
                 mostrarError,
-                preyectoActual,
+                proyectoActual,
                 eliminarProyecto
             }}
         >

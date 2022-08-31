@@ -12,11 +12,11 @@ export default (state, action) => {
         
         case REGISTRO_EXISTOSO:
         case LOGIN_EXISTOSO:
-            console.log("desde Reducer");
-            console.log(action.payload);
+            // console.log("desde Reducer");
+            // console.log(action.payload);
             localStorage.setItem('token', action.payload);
-            console.log("desde localStorage");
-            console.log(localStorage.getItem('token'));
+            // console.log("desde localStorage");
+            // console.log(localStorage.getItem('token'));
             return {
                 ...state,
                 autenticado: true,

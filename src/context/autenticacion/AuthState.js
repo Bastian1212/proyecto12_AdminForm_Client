@@ -56,18 +56,18 @@ import { REGISTRO_EXISTOSO,
 
         const usuarioAutenticado = async () => {
             const token = localStorage.getItem('token');
-            console.log("desde autenticacion de usuario ");
-            console.log(localStorage.getItem('token'));
-            console.log("---------------------------------");
+            // console.log("desde autenticacion de usuario ");
+            // console.log(localStorage.getItem('token'));
+            // console.log("---------------------------------");
             if(true){
                 // Funcion para enviar el token por headers 
-                console.log("hola");
+                // console.log("hola");
                 tokenAuth(token);
 
             }
             try {
                 const respuesta = await clienteAxios.get("/api/auth");
-                console.log(respuesta.data.usuario);
+                //console.log(respuesta.data.usuario);
                 dispatch({
                     type: OBTENER_USUARIOS, 
                     payload : respuesta.data.usuario
@@ -86,15 +86,17 @@ import { REGISTRO_EXISTOSO,
         const iniciarSesion = async datos => {
             try {
                 const respuesta = await clienteAxios.post("/api/auth",datos);
-                console.log("desde iniciar session ");
-                console.log(respuesta.data.token);
+                // console.log("desde iniciar session ");
+                // console.log(respuesta.data.token);
                 dispatch({
                     type : LOGIN_EXISTOSO,
                     payload : respuesta.data.token
                 }); 
                 //
-                //console.log("aaaaaa");
-                //console.log(localStorage.getItem('token'));
+                
+                setTimeout(() => {
+                    usuarioAutenticado();
+                }, 100);
 
                 
             } catch (error) {
@@ -111,9 +113,7 @@ import { REGISTRO_EXISTOSO,
                 
             }
 
-            setTimeout(() => {
-                usuarioAutenticado();
-            }, 100);
+            
 
             
         }

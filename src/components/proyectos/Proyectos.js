@@ -5,19 +5,19 @@ import FormTarea from "../tareas/FormTarea";
 import Tarea from "../tareas/Tarea";
 import ListadoTarea from "../tareas/ListadoTarea";
 
-import authContext from "../../context/autenticacion/authContext";
+import AuthContext from "../../context/autenticacion/authContext";
 
 const Proyectos  = () => {
 
     // Extrar la información de sessión 
 
-    const authContext_ = useContext(authContext);
-    const {usuarioAutenticado} = authContext_;
+    const authContext = useContext(AuthContext);
+    const {usuarioAutenticado} = authContext;
     
     useEffect(() =>  {
         
         usuarioAutenticado();
-    }, []);
+    }, [])
 
     return (  
         <div className="contenedor-app">

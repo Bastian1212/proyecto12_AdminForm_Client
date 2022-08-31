@@ -17,23 +17,24 @@ const ListadoProyecto = () => {
         if(mensaje) { 
             mostrarAlerta(mensaje.msg, mensaje.categoria);
         }
-
+        
         obtenerProyectos();
         // eslint-disable-nxt
 
     }, [mensaje]);
-
+    const proyecto0 = proyectos[0];
+    console.log("desde listado proyectos")
+    console.log(proyecto0);
     if(proyectos.length === 0 ) 
 
         return <p>No hay proyectos, Comienza Creando uno. </p>;
-
-
+    
     return (  
         <ul className="listado-proyectos">
 
             { alerta   ? ( <div className={`alerta ${alerta.categoria} `}>{alerta.msg}</div>  ) : null  }
 
-            {proyectos.map(proyecto => (
+            {proyecto0.map(proyecto => (
                 <Proyecto
                 key={proyecto._id}
                 proyecto={proyecto}
