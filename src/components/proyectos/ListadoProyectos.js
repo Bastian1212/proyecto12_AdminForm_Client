@@ -25,6 +25,8 @@ const ListadoProyecto = () => {
     const proyecto0 = proyectos[0];
     console.log("desde listado proyectos")
     console.log(proyecto0);
+    console.log("-------------------------");
+    console.log(proyectos);
     if(proyectos.length === 0 ) 
 
         return <p>No hay proyectos, Comienza Creando uno. </p>;

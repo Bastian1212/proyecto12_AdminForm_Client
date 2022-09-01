@@ -1,5 +1,4 @@
 import React from "react";
-//import { BrowserRouter as Router, Routes , Route , Switch} from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from "./components/auth/Login";
 import NuevaCuenta from "./components/auth/NuevaCuenta";
@@ -22,21 +21,22 @@ if(token){
 
 function App() {
   return (
-    <AuthState>
       <AlertaState>
         <ProyectoState>
           <TareaState>
             <Router>
-                <Switch> 
-                    <Route  exact path="/" component={Login} />
-                    <Route  exact path="/nueva-cuenta"  component={NuevaCuenta} />
-                    <RutaPrivada  exact path="/proyectos" component={Proyectos} />
-                </Switch>
+              <AuthState>
+                  <Switch> 
+                      <Route  exact path="/" component={Login} />
+                      <Route  exact path="/nueva-cuenta"  component={NuevaCuenta} />
+                      <RutaPrivada  exact path="/proyectos" component={Proyectos} />
+                  </Switch>
+                </AuthState>
               </Router>
           </TareaState>
         </ProyectoState>
       </AlertaState>
-    </AuthState>
+  
   );
 
     
