@@ -10,11 +10,11 @@ const FormTarea = () => {
 
      // obtenr la funcion del context de tarea 
 
-     const tareaContext = useContext(TareaContext);
-     const {tareaseleccionada,errorTarea,agregarTarea,validarTarea, obtenerTareas, actualizarTarea,limpiarTarea} = tareaContext;
+    const tareaContext = useContext(TareaContext);
+    const {tareaseleccionada,errorTarea,agregarTarea,validarTarea, obtenerTareas, actualizarTarea,limpiarTarea} = tareaContext;
 
     //Effect que detecta si hay una tarea seleccionada
-     useEffect(() => {
+    useEffect(() => {
         if(tareaseleccionada !== null){
             setTarea(tareaseleccionada);
         }else{
@@ -23,8 +23,7 @@ const FormTarea = () => {
             })
         }
 
-     }, [tareaseleccionada]);
- 
+    }, [tareaseleccionada]);
     //State del formulario
 
     const [tarea, setTarea ]= useState({
@@ -35,52 +34,50 @@ const FormTarea = () => {
 
      //si no hay proyecto selecionado
     if(!proyecto) return null;
- 
  //Array destructuring para extraer el proyecto actual 
- const [proyectoActual] = proyecto;
+    const [proyectoActual] = proyecto;
 
 // leer los  valres del formulario 
- const handleChange = e => {
-    setTarea({
-        ...tarea,
-        [e.target.name] : e.target.value
-    })
- }
-
- const onSubmit = e =>{
-    e.preventDefault();
-
-    //validar 
-    if(nombre.trim() === "") {
-        validarTarea();
-        return;
-
+    const handleChange = e => {
+        setTarea({
+            ...tarea,
+            [e.target.name] : e.target.value
+        })
     }
 
-    // si es edicion o si es nueva tarea 
-    if(tareaseleccionada === null){
-        //agregar nueva  tarea al state de tareas 
-        tarea.proyecto =  proyectoActual._id;
-        agregarTarea(tarea);
-    }else{
-        // actualizar tarea existente 
-        actualizarTarea(tarea);
-        // elimina  tareaSeleccionada del state 
-        limpiarTarea();
-    }
+    const onSubmit = e =>{
+        e.preventDefault();
+
+        //validar 
+        if(nombre.trim() === "") {
+            validarTarea();
+            return;
+
+        }
+
+        // si es edicion o si es nueva tarea 
+        if(tareaseleccionada === null){
+            //agregar nueva  tarea al state de tareas 
+            tarea.proyecto =  proyectoActual._id;
+            agregarTarea(tarea);
+        }else{
+            // actualizar tarea existente 
+            actualizarTarea(tarea);
+            // elimina  tareaSeleccionada del state 
+            limpiarTarea();
+        }
 
     // pasar la validación 
-
    
 
     //obtener y filtrar las tareas del proyecto actual 
-    obtenerTareas(proyectoActual.id);
+        obtenerTareas(proyectoActual.id);
 
-    // reiniciar el form 
-    setTarea({
-        nombre: ""
-    })
- }
+        // reiniciar el form 
+        setTarea({
+            nombre: ""
+        })
+    }
 
 
     return (  

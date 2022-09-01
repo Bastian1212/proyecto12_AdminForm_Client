@@ -8,7 +8,6 @@ import {TAREAS_PROYECTO,
         AGREGAR_TAREA,
         VALIDAR_TAREA,
         ELIMINAR_TAREA,
-        ESTADO_TAREA, 
         TAREA_ACTUAL,
         ACTUALIZAR_TAREA,
         LIMPIAR_TAREA} from "../../types/index"
@@ -19,7 +18,7 @@ const TareaState = props => {
    
 
     const initialState = {
-   
+        
         tareasProyecto:[],
         errorTarea: false, 
         tareaseleccionada: null 
@@ -32,11 +31,13 @@ const TareaState = props => {
 
     const obtenerTareas = async proyecto => {
         try {
-            const resultado = await clienteAxios.get("api/tareas", {params: {proyecto}});
+            //console.log(proyecto);
+            const resultado = await clienteAxios.get('/api/tareas', { params: { proyecto }});
+            
             dispatch({
                 type: TAREAS_PROYECTO,
                 payload:resultado.data.tareas
-            })
+            });
         } catch (error) {
             console.log(error);
         }
@@ -46,14 +47,17 @@ const TareaState = props => {
     const agregarTarea  = async tarea => {
         
         try {
-
-            const resultado = await  clienteAxios.post("api/tareas", tarea);
-
+            console.log("la tarea es "); 
+            console.log(tarea);
+            const resultado = await clienteAxios.post('/api/tareas', tarea);
+            console.log("el resultado es desde la api ")
+            console.log(resultado.data.tarea);
             dispatch({
                 type: AGREGAR_TAREA,
                 payload:tarea
             })
         } catch (error) {
+            console.log("cai a error");
             console.log(error);
         }
         
@@ -87,13 +91,16 @@ const TareaState = props => {
 
         try {
             const resultado = await clienteAxios.put(`/api/tareas/${tarea._id}`, tarea);
+            console.log(resultado.data.tarea);
             dispatch({
+
                 type: ACTUALIZAR_TAREA,
                 payload: resultado.data.tarea
             })
         
             
         } catch (error) {
+            console.log("paso aki ");
             console.log(error);
             
         }

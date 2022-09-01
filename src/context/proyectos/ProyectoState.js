@@ -40,8 +40,8 @@ const ProyectoState = props => {
             const resultado = await clienteAxios.get("api/proyectos");
             //console.log(resultado.data.proyectos);
             dispatch({
-                type :  AGREGAR_PROYECTO,
-                payload : resultado.data.proyectos,
+                type :  OBTENER_PROYECTO,
+                payload : resultado.data.proyectos
                 
             })
         } catch (error) {

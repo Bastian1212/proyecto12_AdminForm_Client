@@ -9,9 +9,9 @@ const Tarea = ({tarea}) => {
     const {proyecto} = proyectosContext;
 
     const tareaContext = useContext(TareaContext);
-    const {eliminarTarea, obtenerTareas,actualizarTarea,guardarTareaActual} = tareaContext;
+    const {eliminarTarea, obtenerTareas,actualizarTarea, guardarTareaActual} = tareaContext;
     
-    const {proyectoActual} = proyecto;
+    const [proyectoActual] = proyecto;
     
     const tareaEliminar = id => {
         eliminarTarea(id,proyectoActual._id);
@@ -26,12 +26,12 @@ const Tarea = ({tarea}) => {
         }else{
             tarea.estado = true;
         }
-        //cambiarEstadoTarea(tarea);
+        actualizarTarea(tarea);
     }
 
     // Agregga una tarea actual cuando el usuario desea editarla 
     const seleccionarTarea = tarea => {
-        actualizarTarea(tarea);
+        guardarTareaActual(tarea);
     }
 
     return (  
