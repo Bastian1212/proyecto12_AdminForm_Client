@@ -10,11 +10,12 @@ const Tarea = ({tarea}) => {
 
     const tareaContext = useContext(TareaContext);
     const {eliminarTarea, obtenerTareas, cambiarEstadoTarea,guardarTareaActual} = tareaContext;
- 
-
+    
+    const {proyectoActual} = proyecto;
+    
     const tareaEliminar = id => {
-        eliminarTarea(id);
-        obtenerTareas(proyecto[0].id);
+        eliminarTarea(id,proyectoActual._id);
+        obtenerTareas(proyectoActual.id);
     }
 
     // Funcion que modifica ewl estado de las tareas 
@@ -67,7 +68,7 @@ const Tarea = ({tarea}) => {
                 <button
                     type="button"
                     className="btn btn-secundario"
-                    onClick={() => tareaEliminar(tarea.id)}
+                    onClick={() => tareaEliminar(tarea._id)}
                 >Eliminar</button>
             </div>
         </li>
