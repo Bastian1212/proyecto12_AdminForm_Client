@@ -1,6 +1,5 @@
 import React, {useState, useContext, useEffect} from "react";
-import { Link, BrowserRouter, Route } from 'react-router-dom';
-import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 import AlertaContext from "../../context/alertas/alertaContext";
 import authContext from "../../context/autenticacion/authContext";
 
